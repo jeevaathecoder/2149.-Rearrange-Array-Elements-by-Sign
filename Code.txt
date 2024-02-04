@@ -1,0 +1,131 @@
+//Java Code
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int[] answer = new int[nums.length];
+        int evenIndex =0;
+        int oddIndex = 1;
+
+        for(int i=0;i<nums.length; i++){
+            if(nums[i] > 0){
+                answer[evenIndex] = nums[i];
+                evenIndex = evenIndex+2;
+            }
+            else{
+                 answer[oddIndex] = nums[i];
+                 oddIndex+=2;
+            }
+        }
+        return answer;
+    }
+}
+
+
+----------------------------------------------------------------------------------------
+
+//Pyhon Code 
+
+class Solution:
+    def rearrangeArray(self, nums):
+        answer = [0] * len(nums)
+        even_index = 0
+        odd_index = 1
+
+        for num in nums:
+            if num > 0:
+                answer[even_index] = num
+                even_index += 2
+            else:
+                answer[odd_index] = num
+                odd_index += 2
+
+        return answer
+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+//C++
+
+#include <iostream>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> rearrangeArray(std::vector<int>& nums) {
+        std::vector<int> answer(nums.size(), 0);
+        int evenIndex = 0;
+        int oddIndex = 1;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) {
+                answer[evenIndex] = nums[i];
+                evenIndex += 2;
+            } else {
+                answer[oddIndex] = nums[i];
+                oddIndex += 2;
+            }
+        }
+
+        return answer;
+    }
+};
+
+int main() {
+    std::vector<int> arr = {1, -1, 2, -2, 3, -3};
+    Solution solution;
+    std::vector<int> result = solution.rearrangeArray(arr);
+
+    // Printing the result
+    for (int i = 0; i < result.size(); i++) {
+        std::cout << result[i] << " ";
+    }
+
+    return 0;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+//C program
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int* rearrangeArray(int* nums, int length) {
+    int* answer = (int*)malloc(length * sizeof(int));
+    int even_index = 0;
+    int odd_index = 1;
+
+    for (int i = 0; i < length; i++) {
+        if (nums[i] > 0) {
+            answer[even_index] = nums[i];
+            even_index += 2;
+        } else {
+            answer[odd_index] = nums[i];
+            odd_index += 2;
+        }
+    }
+
+    return answer;
+}
+
+int main() {
+    int arr[] = {1, -1, 2, -2, 3, -3};
+    int length = sizeof(arr) / sizeof(arr[0]);
+
+    int* result = rearrangeArray(arr, length);
+
+    // Printing the result
+    for (int i = 0; i < length; i++) {
+        printf("%d ", result[i]);
+    }
+
+    free(result);  // Don't forget to free the allocated memory
+
+    return 0;
+}
+
